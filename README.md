@@ -44,7 +44,7 @@ fastapi-study/
 ```
 
 ## 기간
-### 25.02.24 ~ 25.02.28
+### 1주차: 25.02.24 ~ 25.02.28
 - SQLAlchemy 공식 문서 읽기 및 타이핑
 - Flask 기능 추가 업무, Flask context, Flask_APScheduler, crontab 등에 관련한 이슈 경험과 개념 학습
 - Git branch, merge, push 명령어를 cli에서 실습
