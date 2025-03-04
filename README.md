@@ -50,6 +50,8 @@ fastapi-study/
 - Git branch, merge, push 명령어를 cli에서 실습
 
 ### 2주차 25.03.03. ~ 25.03.07.
+- SQLite 관련 이슈를 적절히 대응하기 위해 SQLite에 대한 학습(+ SQLAlchemy 이어서 학습), [SQLite Documentation](https://www.sqlite.org/docs.html)
+- 
 
 ### 3주차 25.03.10. ~ 25.03.14.
 
