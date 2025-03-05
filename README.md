@@ -1,7 +1,7 @@
 # Python backend(FastAPI) study
 
 ## 설명
-- 인턴 과정에서 사용하는 Python Backend 프레임워크에 능숙해지며, 개인적인 능력 향상을 위해 공부 기록을 남기는 repo
+- 인턴 과정에서 사용하는 Python Backend 프레임워크 및 인프라 요소에 능숙해지며, 개인적인 능력 향상을 위해 공부 기록을 남기는 repo
 - 디렉터리 구조는 FastAPI에서 사용하는 APIRouter 구조를 차용
 ``` Directory Structure
 fastapi-study/
