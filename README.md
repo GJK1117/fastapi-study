@@ -14,10 +14,8 @@ fastapi-study/
 │   │   ├── v1/
 │   │   │   ├── __init__.py
 │   │   │   ├── dependencies.py
-│   │   │   ├── l_fastapi/
-│   │   │   │   ├── __init__.py
-│   │   │   ├── l_sql/
-│   │   │   │   ├── __init__.py
+│   │   │   ├── l_fastapi.py
+│   │   │   ├── l_sql.py
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── user.py

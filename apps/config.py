@@ -1,18 +1,14 @@
 # fastapi 설정 및 환경 변수 정의
 import os
-from functools import lru_cache
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from .api.v1 import api_router
 
 BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
 
 class Setting(BaseSettings):
     model_config = SettingsConfigDict(env_file=BASE_DIR)
-
-@lru_cache
-def get_settings() -> Setting:
-    return Setting()
 
 def create_app() -> FastAPI:
     app: FastAPI = FastAPI()
@@ -25,5 +21,7 @@ def create_app() -> FastAPI:
         allow_methods=["*"],  # 모든 HTTP 메서드 허용 (GET, POST, PUT, DELETE 등)
         allow_headers=["*"],  # 모든 헤더 허용
     )
+
+    app.include_router(api_router)
 
     return app
