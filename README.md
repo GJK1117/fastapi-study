@@ -11,13 +11,13 @@ fastapi-study/
 │   │   ├── config.py
 │   │   ├── security.py
 │   ├── api/
-│   │   ├── __init__.py
-│   │   ├── routes/
+│   │   ├── v1/
 │   │   │   ├── __init__.py
-│   │   │   ├── users.py
-│   │   │   ├── items.py
-│   │   │   ├── auth.py
-│   │   ├── dependencies.py
+│   │   │   ├── dependencies.py
+│   │   │   ├── l_fastapi/
+│   │   │   │   ├── __init__.py
+│   │   │   ├── l_sql/
+│   │   │   │   ├── __init__.py
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── user.py
@@ -52,6 +52,7 @@ fastapi-study/
 ### 2주차 25.03.03. ~ 25.03.07.
 - SQLite 관련 이슈를 적절히 대응하기 위해 SQLite에 대한 학습(+ SQLAlchemy 이어서 학습), [SQLite Documentation](https://www.sqlite.org/docs.html)
 - Git Action WorkFlow 작성 방법에 대해 학습(SSH, Docker, Test)
+- FastAPI 시작(uvicorn) 및 환경변수 주입 학습(pydantic_settings, lru_cache)
 
 ### 3주차 25.03.10. ~ 25.03.14.
 
