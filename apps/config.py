@@ -22,6 +22,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],  # 모든 헤더 허용
     )
 
+    # 하위 엔드포인트 APIRouter 추가 
     app.include_router(api_router)
 
     return app

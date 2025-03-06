@@ -3,7 +3,7 @@ from fastapi.responses import (
     PlainTextResponse, JSONResponse
 )
 
-api_router_l_fastapi:APIRouter = APIRouter(
+api_router_l_fastapi: APIRouter = APIRouter(
     prefix='/l_fastapi', 
     tags=['fastapi'],
 )
