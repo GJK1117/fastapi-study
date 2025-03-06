@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from functools import lru_cache
 from .config import Setting, create_app
-from apps import api_router
+from apps.api.v1 import api_router
 
 app: FastAPI = create_app()
 app.include_router(api_router)
