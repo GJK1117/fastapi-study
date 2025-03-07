@@ -24,4 +24,8 @@ def get_settings() -> Setting:
 async def health() -> PlainTextResponse:
     return 'ok'
 
+# 라우트 확인 로그
 print(f"Registered routes: {[route.path for route in app.routes]}")
+
+# 테스트 시 명령어 사용 예시
+# uvicorn --port 20000 --reload apps.main:app
