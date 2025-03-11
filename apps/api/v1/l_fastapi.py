@@ -1,5 +1,5 @@
 from fastapi import (
-    APIRouter, Request, Path, Query, Body
+    APIRouter, Request, Path, Query, Body, Cookie, Header, Form
 )
 from fastapi.responses import (
     PlainTextResponse, JSONResponse, HTMLResponse, ORJSONResponse
@@ -7,7 +7,7 @@ from fastapi.responses import (
 from fastapi.templating import Jinja2Templates
 import os
 from typing import (
-    Union, Annotated, Literal
+    Union, Annotated, Literal, List
 )
 from pydantic import BaseModel, Field
 from ...service.test_json_orjson import test_data, test_data_v2
@@ -212,3 +212,72 @@ Body 매개변수를 하나만 갖고 있을 때, item을 키 값으로 item cla
 async def test_body_embed(item_id: int, item: Item = Body(embed=True)):
     results = {"item_id": item_id, "item": item}
     return results
+
+class Cookies(BaseModel):
+    # 추가 쿠키 내용을 금지
+    model_config = {"extra": "forbid"}
+
+    session_id: str
+    fatebook_tracker: str | None = None
+    googall_tracker: str | None = None
+
+@api_router_l_fastapi.get("/cookies/")
+async def test_cookies(cookies: Annotated[Cookies, Cookie()]):
+    return cookies
+
+class CommonHeaders(BaseModel):
+    # 추가 헤더 입력 금지
+    # model_config = {"extra": "forbid"}
+
+    # header의 키 값으로 사용할 떄는 _(underscore)를 -(minus)로 변환
+    host: str
+    save_data: bool
+    if_modified_since: str | None = None
+    traceparent: str | None = None
+    x_tag: list[str] = []
+
+@api_router_l_fastapi.get("/header/")
+async def test_header(headers: Annotated[CommonHeaders, Header()]):
+    return headers
+
+class Item(BaseModel):
+    name: str
+    description: Union[str, None] = None
+    price: float
+    tax: float = 10.5
+    tags: List[str] = []
+
+items_first = {
+    "foo": {"name": "Foo", "price": 50.2},
+    "bar": {"name": "Bar", "description": "The bartenders", "price": 62, "tax": 20.2},
+    "baz": {"name": "Baz", "description": None, "price": 50.2, "tax": 10.5, "tags": []},
+}
+
+@api_router_l_fastapi.get("/exc_unset/{item_id}", response_model=Item, response_model_exclude_unset=True)
+async def test_res_model_exclude_unset(item_id: str):
+    return items_first[item_id]
+
+items_second = {
+    "foo": {"name": "Foo", "price": 50.2},
+    "bar": {"name": "Bar", "description": "The Bar fighters", "price": 62, "tax": 20.2},
+    "baz": {
+        "name": "Baz",
+        "description": "There goes my baz",
+        "price": 50.2,
+        "tax": 10.5,
+    },
+}
+
+@api_router_l_fastapi.get(
+    "/include/{item_id}/name",
+    response_model=Item,
+    response_model_include={"name", "description"},
+)
+async def test_response_model_include(item_id: str):
+    return items_second[item_id]
+
+@api_router_l_fastapi.get("/exclude/{item_id}/public", response_model=Item, response_model_exclude={"tax"})
+async def test_response_model_exclude(item_id: str):
+    return items_second[item_id]
+
+
