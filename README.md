@@ -53,6 +53,8 @@ fastapi-study/
 - FastAPI 시작(uvicorn) 및 환경변수 주입 학습(pydantic_settings, lru_cache)
 
 ### 3주차 25.03.10. ~ 25.03.14.
+- AI서비스 인수인계
+- 
 
 ### 4주차 25.03.17. ~ 25.03.21.
 

@@ -4,7 +4,7 @@ from fastapi.responses import (
 )
 from fastapi.templating import Jinja2Templates
 import os
-from ...service.test_json_orjson import test_data
+from ...service.test_json_orjson import test_data, test_data_v2
 
 TEMPLATES_DIR: str = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'templates')
 templates: Jinja2Templates = Jinja2Templates(directory=TEMPLATES_DIR)
@@ -26,7 +26,7 @@ async def test_plaintext():
     response_class=JSONResponse,
 )
 async def test_json():
-    return JSONResponse(status_code=200, content=test_data)
+    return JSONResponse(status_code=200, content=test_data_v2)
 
 @api_router_l_fastapi.get(
     '/html',
@@ -62,4 +62,4 @@ async def test_jinja2(request: Request, id: str):
     response_class=ORJSONResponse,
 )
 async def test_orjson():
-    return ORJSONResponse(status_code=200, content=test_data)
+    return ORJSONResponse(status_code=200, content=test_data_v2)
