@@ -53,8 +53,8 @@ fastapi-study/
 - FastAPI 시작(uvicorn) 및 환경변수 주입 학습(pydantic_settings, lru_cache)
 
 ### 3주차 25.03.10. ~ 25.03.14.
-- AI서비스 인수인계
-- 
+- AI서비스 인수인계, 동아닷컴 OpenAPI 활용 방안 고민
+- FastAPI Path, Query Parameter 및 Body 전달 방식 학습(Pydantic)
 
 ### 4주차 25.03.17. ~ 25.03.21.
 
